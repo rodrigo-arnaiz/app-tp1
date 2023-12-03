@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Términos y Condiciones {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {% block customCSS %}
+    {% endblock %}
+</head>
+
+<body class="text-start">
+    {% block body %}
+    <div class="container">
+        <h1 style="text-align: center;">TÉRMINOS Y CONDICIONES</h1>
+        <p>Fecha de última actualización: 01/12/2023</p>
+        <p>Estos acuerdos legales ("Términos") constituyen un compromiso jurídico entre usted ("Usuario" o "Paciente") y John Doe S.A. ("la Empresa", "nosotros"), 
+            la entidad propietaria y operadora de la aplicación. Al hacer uso de la aplicación, usted acepta comprometerse plenamente con estos Términos. 
+            En caso de no estar de acuerdo con estas disposiciones, le instamos a abstenerse de utilizar la aplicación.</p>
+        <ol>
+            <li><strong>Inscripción de Datos del Paciente:</strong> Se garantiza la seguridad y autenticidad de la información del paciente. 
+                Al completar el formulario de registro, los pacientes recibirán un correo electrónico de validación. Este paso es esencial para 
+                verificar su identidad y asegurar que la información proporcionada sea precisa.</li>
+            <li><strong>Protección de Datos Personales:</strong> En cumplimiento con la Ley de Protección de Datos Personales, nos comprometemos a salvaguardar 
+                la privacidad y seguridad de la información del paciente. Utilizamos medidas tecnológicas avanzadas y protocolos de seguridad para garantizar la 
+                integridad de los datos almacenados.</li>
+            <li><strong>Registro en el Registro Nacional de Bases de Datos:</strong> John Doe S.A. cumple con todas las regulaciones y estándares legales.
+                 Nuestra base de datos está debidamente registrada en el Registro Nacional de Bases de Datos, lo que asegura transparencia y protección de datos.</li>
+            <li><strong>Suspensión del Acceso:</strong> John Doe S.A. se reserva el derecho de suspender o finalizar el acceso de cualquier usuario que incumpla 
+                estos términos y condiciones. La empresa puede tomar medidas legales apropiadas en caso de violaciones graves</li>
+            <li><strong>Prohibido el uso indebido:</strong> Queda estrictamente prohibido el uso indebido, abuso o violación de derechos de terceros a través de la 
+                aplicación. No se tolerará la publicación de contenido ofensivo, ilegal o perjudicial para otros usuarios o la empresa.</li>
+            <li><strong>Responsabilidades del Usuario:</strong> Los usuarios son responsables de la exactitud de la información proporcionada durante el registro.
+                Cada usuario debe utilizar la aplicación de manera ética y conforme a todas las leyes y regulaciones aplicables.</li>
+            <li><strong>Modificación de los Términos y Condiciones:</strong> Nos reservamos el derecho de modificar estos Términos y Condiciones en 
+                cualquier momento, comprometiéndose a anunciarlo por medio de un aviso por medio de esta aplicacion o su mail.</li>
+
+        </ol>
+        <a class = "btn btn-secondary" href = "{{ url_for('home')  }}"> Home </a>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

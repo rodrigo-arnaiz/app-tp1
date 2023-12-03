@@ -1,0 +1,141 @@
+{% extends 'base2.html' %}
+
+<title>{% block title %} Registrar paciente {% endblock %} </title>
+
+{% block custombase %}
+{% endblock %}
+
+{% block customCSS %} 
+<link rel="stylesheet" href=" {{url_for ('static', filename = 'css/registro.css')}}">
+{% endblock %}
+
+{% block body %}
+<form class = "form-registry" action = "/registro" method = "POST" onsubmit  = "return validateForm (event)">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class = "alert alert-{{ category }} alert-dismissible">
+            <strong> {{ message }} </strong>
+            <button type = "button" class = "btn-close" data-bs-dismiss = "alert" aria-label = "Close"> </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+<br><br>    
+    <h1 class="h3 mb-3 fw-normal"> Registro de paciente</h1>
+    <input type = "hidden" name = "csrf_token" value = "{{ csrf_token() }}">
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="dni" name = "dni" placeholder="DNI">
+      <label for="dni"> Numero de documento</label>
+      <br>
+    </div>
+    <div class = "row">
+        <div class = "col">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="nombre" name = "nombre" placeholder="Nombre">
+                <label for="Nombre"> Nombre</label>
+            </div>
+        </div>
+       <div class = "col">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="apellido" name = "apellido" placeholder="Apellido">
+                <label for="Apellido"> Apellido</label>
+            </div>
+       </div>
+    </div>
+    <br>
+    <div class = "form-floating">
+        <input type="text" class="form-control" id="telefono" name = "telefono" placeholder="Numero de telefono">
+        <label for="Telefono"> Telefono</label>
+        <br>
+    </div>
+    <div class = "form-floating">
+        <input type="text" class="form-control" id="email" name = "email" placeholder="Ingrese su Email">
+        <label for="Email"> Email</label>
+        <br>
+    </div>
+    <div class = "form-floating">
+        <input type="text" class="form-control" id="domicilio" name = "domicilio" placeholder="Domicilio">
+        <label for="Domicilio"> Domicilio</label>
+        <br>
+    </div>
+    <div class = "form-group">
+        <label for="obra_social"> Obra Social</label>
+        <select class = "form-control" id="obra_social" name = "obra_social">
+            <option value = "SEROS"> SEROS </option>
+            <option value = "OSDE"> OSDE </option>
+            <option value = "OSECAC"> OSECAC </option>
+            <option value = "OSPRERA"> OSPRERA </option>
+            <option value = "Mutual Sancor"> Mutual Sancor </option>
+            <option value = "UPCN"> UPCN </option>
+        </select>
+        <br>
+    </div>
+    <div class = "form-check-label">
+        <label for="fecha_de_nacimiento"> Fecha de nacimiento</label>
+        <input type="date" class="form-control" id="fecha_de_nacimiento" name = "fecha_de_nacimiento">
+        <br>
+    </div>
+    <div class = "form-group">
+        <label for="sexo"> Sexo </label>
+        <div class = "form-check">
+            <label class = "form-check-label" for = "masculino"> Masculino </label>
+            <input class = "botoncito" type="radio" class="form-check-input" id="masculino" name = "sexo" value = "Masculino">
+        </div>
+        <div class = "form-check">
+            <label class = "form-check-label" for = "femenino"> Femenino </label>
+            <input class = "botoncito" type="radio" class="form-check-input" id="femenino" name = "sexo" value = "Femenino">
+        </div>
+        <br>
+    </div>
+    <div class="form-floating mt-2">
+      <input type="password" class="form-control" id = "password" name = "password" placeholder="Contraseña">
+      <label for="password">Contraseña</label>
+    </div>
+    <div class="form-floating mt-2">
+        <input type="password" class="form-control" id = "confirmPassword" name = "password2" placeholder="Contraseña">
+        <label for="password">Ingrese nuevamente la contraseña</label>
+        <br>
+      </div>
+    
+    <div class = "form-check mt-2">
+        <div class = "checkbox-container">
+            <label class = "form-check-label" for = "terminos_y_condiciones"> 
+                He leido y acepto los <a href = " {{ url_for ('terminos_y_condiciones') }}" class = "text-decoration-none fw-semibold"> terminos y condiciones </a>
+                <input class = "terminos_y_condiciones" type = "radio"  id = "terminos_y_condiciones" name = "terminos_y_condiciones">
+            </label>
+        </div>
+        <br>
+    </div>
+    <button id = "submitBtn" class="btn btn-primary w-100 py-2"  type ="submit">Sing up</button>
+</form>
+
+
+<script>
+
+    function toggleSubmitButton() {
+        const submitBtn = document.getElementById("submitBtn");
+        const allInputs = document.querySelectorAll('input:not([type="submit"])');
+        const allFilled = Array.from(allInputs).every(input => input.value.trim() !== '');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const radios = document.querySelectorAll('input[type="radio"]');
+        const allRadiosChecked = Array.from(radios).some(radio => radio.checked);
+        const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+
+        const terminosCheckbox = document.getElementById("terminos_y_condiciones");
+        const sexoRadios = document.querySelectorAll('input[name="sexo"]');
+        const sexoChecked = Array.from(sexoRadios).some(radio => radio.checked);
+        submitBtn.disabled = !(allFilled && allChecked && allRadiosChecked && sexoChecked && terminosCheckbox.checked);
+    }
+
+
+        toggleSubmitButton(); 
+
+        const inputs = document.querySelectorAll('input:not([type="submit"]), input[type="checkbox"], input[type="radio"]');
+        inputs.forEach(input => {
+            input.addEventListener('input', toggleSubmitButton);
+        });
+</script>
+{% endblock %}

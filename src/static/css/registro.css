@@ -1,0 +1,96 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: contents;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.form-registry {
+  max-width: 330px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.form-registry .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-registry input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-registry input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-registry input[type = "date"]{
+    margin-bottom: 10px; 
+    border-radius: 0.25rem;
+}
+
+.form-registry input[type = "date"]{
+    margin-bottom: 10px; 
+    border-radius: 0.25rem;
+}
+
+.alert {
+  padding: 1rem; 
+  margin-bottom: 1rem; 
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  position: relative; 
+}
+
+.alert-error {
+  color: red;
+  background-color: rgba(255,0,0,0.2);
+  border-color: red;
+
+}
+
+.alert-success {
+  color: green;
+  background-color: rgba(0,255,0,0.2);
+  border-color: green;
+}
+
+.alert button.close{
+  position: absolute; 
+  right: 10px; 
+  top: 50%; 
+  transform: translate(-50%);
+}
+
+.registro-link {
+  color: white;
+}
+
+/* .botoncito {
+  border-radius: 50px;
+  background-color: black;
+} */
+
+
+.checkbox-container{
+  display: flex; 
+  align-items: center;
+  line-height: 20px;
+}
+
+.terminos {
+  width: 20px; 
+  height: 40px; 
+  text-align: center; 
+  line-height: 40px;
+  margin-left: 10px; 
+  vertical-align: middle;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Luego, carga tu script -->
+    <script src="{{ url_for('static', filename='js/login.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+      <div class="backbox">
+        <div class="loginMsg">
+          <div class="textcontent">
+            <p class="title">No estas registrado?</p>
+            <p>Click en sing up para registrarte.</p>
+            <button id="switch1">Sign Up</button>
+          </div>
+        </div>
+        <div class="signupMsg visibility">
+          <div class="textcontent">
+            <p class="title">Ya estas registrado?</p>
+            <p>Click en log in para loguearte.</p>
+            <button id="switch2">LOG IN</button>
+          </div>
+        </div>
+      </div>
+      <!-- backbox -->
+  
+      <div class="frontbox">
+        <div class="login">
+          <h2>LOG IN</h2>
+          <div class="inputbox">
+            <input type="text" name="email" placeholder="  EMAIL">
+            <input type="password" name="password" placeholder="  PASSWORD">
+          </div>
+          <button>LOG IN</button>
+        </div>
+  
+        <div class="signup hide">
+          <h2>SIGN UP</h2>
+          <div class="inputbox">
+            <form id="signupForm" action="{{ url_for('signup_route') }}" method="POST">
+              <input type="text" name="fullname" placeholder="FULLNAME" required>
+              <input type="email" name="email" placeholder="EMAIL" required>
+              <input type="password" name="password" placeholder="PASSWORD" required>
+              <button type="submit">SIGN UP</button>
+            </form>
+          </div>
+          <button action="/login" method="POST">SIGN UP</button>
+        </div>
+  
+      </div>
+      <!-- frontbox -->
+    </div>
+  </body>
+  
+  </html>

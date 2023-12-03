@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    ports: 
+      - "5432:5432" 
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=aspectos_db
+    volumes: 
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mi-red
+
+  flask-app:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    networks:
+      - mi-red
+      
+networks:
+  mi-red:
+
+volumes:
+  postgres_data:

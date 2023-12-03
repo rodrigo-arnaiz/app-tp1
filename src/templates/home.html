@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %} 
+
+{% block body %}
+    <h1 style="margin-top: 80px;"> Bienvenido, {{ current_user.nombre }} {{ current_user.apellido}} </h1>
+    <a class = "btn btn-secondary" href = "{{ url_for('logout')  }}"> Cerrar sesion </a>
+    <a class = "btn btn-secondary" href = "{{ url_for('terminos_y_cond2')  }}"> Terminos y Condiciones</a>
+{% endblock %}
