@@ -5,7 +5,7 @@ Es una app web que permite registrar un paciente al que le va a llegar un mail c
 Utiliza docker, flask, python y postgresql
 
 Modo de uso:
-1) Primero se debe clonar este repo
+1) Primero se debe clonar este repo con un git clone git@github.com:rodrigo-arnaiz/app-tp1.git (si no tiene la ssh utilice http)
 2) Se abre una consola a la altura del docker-compose.yml y se escribe docker compose up
 3) Pega esta url en su navegador http://127.0.0.1:4000/
 4) Ya deberia estar en el login de la pagina, simplemente se dirige a Sing up para registrarse
